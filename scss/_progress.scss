@@ -1,6 +1,8 @@
 // Signature element: instead of a generic top bar, progress is drawn as a
 // constellation line down the right edge that connects star-dots as the
 // reader descends the page.
+@use 'index' as *;
+
 .constellation-progress {
   position: fixed;
   top: 50%;

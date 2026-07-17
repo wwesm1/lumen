@@ -1,0 +1,43 @@
+@use 'index' as *;
+
+@mixin breakpoint($bp) {
+  @if $bp == tablet {
+    @media (max-width: $bp-tablet) { @content; }
+  } @else if $bp == mobile {
+    @media (max-width: $bp-mobile) { @content; }
+  }
+}
+
+// GPU-accelerated transform base — promotes to its own layer so animated
+// elements don't trigger layout/paint on neighboring content.
+@mixin gpu-layer {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@mixin glass($bg: rgba(26, 19, 48, 0.5)) {
+  background: $bg;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(245, 243, 255, 0.08);
+}
+
+@mixin glow-text($color: $color-nebula, $strength: 0.6) {
+  text-shadow:
+    0 0 12px rgba($color, $strength),
+    0 0 32px rgba($color, $strength * 0.5);
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

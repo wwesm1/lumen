@@ -1,3 +1,5 @@
+@use 'index' as *;
+
 .footer {
   padding: $space-4 $space-3;
   border-top: 1px solid rgba($color-starlight, 0.06);

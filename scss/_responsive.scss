@@ -1,3 +1,5 @@
+@use 'index' as *;
+
 @include breakpoint(mobile) {
   .navbar__inner { padding: 0 $space-2; }
   .hero { padding: $space-5 $space-2; }

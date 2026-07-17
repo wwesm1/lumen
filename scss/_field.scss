@@ -1,3 +1,5 @@
+@use 'index' as *;
+
 .field {
   padding: $space-6 $space-3;
   z-index: $z-content;

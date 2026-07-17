@@ -1,3 +1,5 @@
+@use 'index' as *;
+
 .stats {
   padding: $space-5 $space-3;
   z-index: $z-content;

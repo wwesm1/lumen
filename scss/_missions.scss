@@ -1,3 +1,5 @@
+@use 'index' as *;
+
 .missions {
   padding: $space-6 $space-3;
   z-index: $z-content;
