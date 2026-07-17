@@ -1,0 +1,25 @@
+.footer {
+  padding: $space-4 $space-3;
+  border-top: 1px solid rgba($color-starlight, 0.06);
+  z-index: $z-content;
+  position: relative;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-2;
+    font-size: 0.85rem;
+    color: var(--color-starlight-dim);
+  }
+
+  &__brand {
+    font-family: $font-display;
+    color: var(--color-starlight);
+
+    span { color: var(--color-cyan); }
+  }
+}
