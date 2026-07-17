@@ -1,7 +1,6 @@
 // Palette is deliberately not "void-black + one neon accent": it pairs a
 // deep indigo base with a nebula violet / stellar cyan pair so gradients
 // read as gas-cloud color, plus a warm star-gold for human, lived-in accents.
-@use 'index' as *;
 
 $color-void:        #05040c;   // page background, deepest space
 $color-void-soft:    #0b0918;  // card / panel surface
