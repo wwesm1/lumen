@@ -1,0 +1,5 @@
+@include breakpoint(mobile) {
+  .navbar__inner { padding: 0 $space-2; }
+  .hero { padding: $space-5 $space-2; }
+  .stats__grid { grid-template-columns: 1fr; }
+}
