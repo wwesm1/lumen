@@ -1,0 +1,37 @@
+// Signature element: instead of a generic top bar, progress is drawn as a
+// constellation line down the right edge that connects star-dots as the
+// reader descends the page.
+.constellation-progress {
+  position: fixed;
+  top: 50%;
+  right: clamp(16px, 3vw, 40px);
+  transform: translateY(-50%);
+  width: 40px;
+  height: min(60vh, 420px);
+  z-index: $z-progress;
+  pointer-events: none;
+
+  line {
+    stroke: var(--color-cyan);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 4px rgba($color-cyan, 0.7));
+    transition: y2 0.1s linear;
+  }
+
+  circle {
+    fill: var(--color-void);
+    stroke: rgba($color-starlight, 0.35);
+    stroke-width: 1.2;
+    transition: fill 0.4s $ease-out, stroke 0.4s $ease-out, r 0.4s $ease-out;
+
+    &.is-lit {
+      fill: var(--color-gold);
+      stroke: var(--color-gold);
+      filter: drop-shadow(0 0 6px rgba($color-gold, 0.8));
+    }
+  }
+
+  @include breakpoint(tablet) {
+    display: none;
+  }
+}
