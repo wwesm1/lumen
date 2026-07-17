@@ -1,0 +1,79 @@
+.missions {
+  padding: $space-6 $space-3;
+  z-index: $z-content;
+  position: relative;
+}
+
+.mission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.mission {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: var(--color-void-soft);
+  border: 1px solid rgba($color-starlight, 0.06);
+  transition: border-color 0.35s $ease-out, transform 0.35s $ease-out;
+
+  &:hover {
+    border-color: rgba($color-nebula, 0.4);
+    transform: translateX(4px);
+  }
+
+  &__index {
+    font-family: $font-data;
+    font-size: 0.85rem;
+    color: var(--color-starlight-dim);
+    width: 2ch;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.05rem;
+  }
+
+  &__desc {
+    margin-top: 0.3rem;
+    font-size: 0.92rem;
+    color: var(--color-starlight-dim);
+  }
+
+  &__status {
+    font-family: $font-data;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+
+    &--done {
+      color: var(--color-cyan);
+      background: rgba($color-cyan, 0.12);
+    }
+    &--active {
+      color: var(--color-gold);
+      background: rgba($color-gold, 0.14);
+    }
+    &--queued {
+      color: var(--color-starlight-dim);
+      background: rgba($color-starlight, 0.06);
+    }
+  }
+
+  @include breakpoint(mobile) {
+    flex-wrap: wrap;
+  }
+}
