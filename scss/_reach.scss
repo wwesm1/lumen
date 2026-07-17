@@ -1,0 +1,56 @@
+.reach {
+  position: relative;
+  padding: $space-6 $space-3;
+  overflow: hidden;
+  z-index: $z-content;
+}
+
+.reach__layer {
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  @include gpu-layer;
+
+  &--far {
+    background: radial-gradient(circle at 20% 30%, rgba($color-nebula, 0.18), transparent 55%);
+  }
+  &--mid {
+    background: radial-gradient(circle at 80% 70%, rgba($color-cyan, 0.14), transparent 50%);
+  }
+}
+
+.reach__content {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reach__cards {
+  margin-top: $space-5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-3;
+  text-align: left;
+
+  @include breakpoint(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reach-card {
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: var(--color-plum);
+  border: 1px solid rgba($color-starlight, 0.06);
+
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--color-starlight-dim);
+    font-size: 0.92rem;
+  }
+}
