@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "sass": "sass scss/style.scss style.css",
+    "sass": "sass scss/main.scss css/main.css",
     "sass:watch": "sass --watch scss/main.scss:css/main.css"
   },
   "keywords": [],
