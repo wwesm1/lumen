@@ -1,0 +1,40 @@
+.stats {
+  padding: $space-5 $space-3;
+  z-index: $z-content;
+  position: relative;
+
+  &__grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-3;
+
+    @include breakpoint(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: $space-4 $space-2;
+  border-radius: $radius-md;
+  @include glass();
+
+  &__value {
+    display: block;
+    font-family: $font-data;
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--color-starlight);
+    @include glow-text($color-cyan, 0.3);
+  }
+
+  &__label {
+    display: block;
+    margin-top: $space-1;
+    font-size: $fs-small;
+    color: var(--color-starlight-dim);
+  }
+}
