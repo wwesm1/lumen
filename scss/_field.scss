@@ -1,0 +1,50 @@
+.field {
+  padding: $space-6 $space-3;
+  z-index: $z-content;
+  position: relative;
+}
+
+.field__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-3;
+
+  @include breakpoint(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.note {
+  padding: $space-3;
+  border-radius: $radius-md;
+  background: var(--color-void-soft);
+  border: 1px solid rgba($color-starlight, 0.06);
+  transition: transform 0.4s $ease-out, border-color 0.4s $ease-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-cyan, 0.35);
+  }
+
+  &__tag {
+    display: inline-block;
+    font-family: $font-data;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: $space-2;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--color-starlight-dim);
+    font-size: 0.92rem;
+  }
+}
