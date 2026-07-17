@@ -1,0 +1,14 @@
+{
+  "name": "lumen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "sass": "sass scss/style.scss style.css",
+    "sass:watch": "sass --watch scss/style.scss:style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

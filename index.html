@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumen — The Universe Awaits</title>
+  <meta name="description" content="Lumen is a deep-space observation network charting exoplanets, nebulae and the edges of the known universe.">
+
+  <!-- Fonts: Space Grotesk carries display type, Outfit carries body/UI, Inter carries data & counters -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__core">
+      <span class="loader__ring"></span>
+      <span class="loader__ring loader__ring--delay"></span>
+      <span class="loader__label">LUMEN</span>
+    </div>
+    <div class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></div>
+  </div>
+
+  <!-- Ambient starfield + comet cursor render into these canvases -->
+  <canvas id="particleField" class="particle-field" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__core"></span>
+    <span class="cursor__trail"></span>
+  </div>
+
+  <!-- Scroll progress, styled as a constellation that connects as you descend the page -->
+  <svg class="constellation-progress" id="constellationProgress" viewBox="0 0 40 400" preserveAspectRatio="none" aria-hidden="true">
+    <line id="constellationLine" x1="20" y1="0" x2="20" y2="0" />
+    <g id="constellationDots"></g>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#top" class="navbar__brand">
+        <span class="navbar__mark" aria-hidden="true">✦</span>
+        Lumen
+      </a>
+      <nav class="navbar__links" aria-label="Primary">
+        <a href="#missions">Missions</a>
+        <a href="#reach">Reach</a>
+        <a href="#field">Field Notes</a>
+        <a href="#join">Join</a>
+      </nav>
+      <button class="navbar__cta" data-scroll-to="#join">Start Exploring</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-parallax="0.15">Deep Space Observation Network</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line" data-parallax="0.05">The Universe</span>
+          <span class="hero__title-line hero__title-line--glow" data-parallax="0.05">Awaits</span>
+        </h1>
+        <p class="hero__subtitle" data-parallax="0.08">
+          Lumen listens to the sky through forty-one telescopes on four continents,
+          turning raw starlight into maps of worlds we have never set foot on.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" data-scroll-to="#join">Start Exploring</button>
+          <button class="btn btn--ghost" data-scroll-to="#missions">See the Missions</button>
+        </div>
+      </div>
+      <button class="hero__scroll-cue" data-scroll-to="#stats" aria-label="Scroll to explore">
+        <span></span>
+      </button>
+    </section>
+
+    <!-- ============ STATS / ANIMATED COUNTERS ============ -->
+    <section class="stats" id="stats">
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <span class="stat__value" data-counter data-target="5482" data-suffix="">0</span>
+          <span class="stat__label">Confirmed exoplanets</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__value" data-counter data-target="41" data-suffix="">0</span>
+          <span class="stat__label">Telescopes online</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__value" data-counter data-target="127" data-suffix="k">0</span>
+          <span class="stat__label">Light-years surveyed</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__value" data-counter data-target="99" data-suffix=".2%">0</span>
+          <span class="stat__label">Sky coverage, southern array</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MISSIONS (real sequence — mission order is meaningful) ============ -->
+    <section class="missions" id="missions">
+      <div class="section-head reveal">
+        <p class="section-head__eyebrow">Flight sequence</p>
+        <h2 class="section-head__title">Four missions, one line of sight</h2>
+        <p class="section-head__body">Every mission builds on the last array's findings — each one narrows the search for the next.</p>
+      </div>
+
+      <ol class="mission-list">
+        <li class="mission reveal">
+          <span class="mission__index">01</span>
+          <div class="mission__body">
+            <h3 class="mission__title">Wide Field Survey</h3>
+            <p class="mission__desc">A first pass across the visible sky, flagging candidate systems for closer study.</p>
+          </div>
+          <span class="mission__status mission__status--done">Complete</span>
+        </li>
+        <li class="mission reveal">
+          <span class="mission__index">02</span>
+          <div class="mission__body">
+            <h3 class="mission__title">Spectral Confirmation</h3>
+            <p class="mission__desc">Ground array cross-checks candidates against atmospheric absorption lines.</p>
+          </div>
+          <span class="mission__status mission__status--done">Complete</span>
+        </li>
+        <li class="mission reveal">
+          <span class="mission__index">03</span>
+          <div class="mission__body">
+            <h3 class="mission__title">Deep Imaging Pass</h3>
+            <p class="mission__desc">Extended exposure on the strongest candidates, resolving orbit and composition.</p>
+          </div>
+          <span class="mission__status mission__status--active">In progress</span>
+        </li>
+        <li class="mission reveal">
+          <span class="mission__index">04</span>
+          <div class="mission__body">
+            <h3 class="mission__title">Habitability Index</h3>
+            <p class="mission__desc">Modelling which of the confirmed worlds could hold liquid water, and where.</p>
+          </div>
+          <span class="mission__status mission__status--queued">Queued</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ REACH / PARALLAX SHOWCASE ============ -->
+    <section class="reach" id="reach">
+      <div class="reach__layer reach__layer--far" data-parallax="0.1" aria-hidden="true"></div>
+      <div class="reach__layer reach__layer--mid" data-parallax="0.25" aria-hidden="true"></div>
+      <div class="reach__content">
+        <p class="section-head__eyebrow reveal">Signal reach</p>
+        <h2 class="section-head__title reveal">From backyard skies to the galactic edge</h2>
+        <div class="reach__cards">
+          <article class="reach-card reveal">
+            <h3>Local Array</h3>
+            <p>Twelve telescopes across three time zones, watching the near sky every clear night.</p>
+          </article>
+          <article class="reach-card reveal">
+            <h3>Deep Field Relay</h3>
+            <p>A relay of radio dishes tuned to signals that left their source before Earth had oceans.</p>
+          </article>
+          <article class="reach-card reveal">
+            <h3>Open Data</h3>
+            <p>Every confirmed reading is published within 48 hours, free for any researcher to use.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FIELD NOTES ============ -->
+    <section class="field" id="field">
+      <div class="section-head reveal">
+        <p class="section-head__eyebrow">Field notes</p>
+        <h2 class="section-head__title">What the sky told us this season</h2>
+      </div>
+      <div class="field__grid">
+        <article class="note reveal">
+          <span class="note__tag">Nebula</span>
+          <h3>A nursery of new stars in Cygnus</h3>
+          <p>Infrared imaging revealed over 200 protostars forming inside a dust cloud we'd mapped as empty a decade ago.</p>
+        </article>
+        <article class="note reveal">
+          <span class="note__tag">Exoplanet</span>
+          <h3>A tidally locked world with weather</h3>
+          <p>Wind patterns on the terminator line of a nearby exoplanet suggest an atmosphere thick enough to circulate heat.</p>
+        </article>
+        <article class="note reveal">
+          <span class="note__tag">Deep Field</span>
+          <h3>Light from before the Milky Way formed</h3>
+          <p>A faint galaxy cluster, redshifted almost past detection, gives us a glimpse of the universe in its infancy.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ JOIN / CTA ============ -->
+    <section class="join" id="join">
+      <div class="join__glow" aria-hidden="true"></div>
+      <p class="section-head__eyebrow reveal">Join the network</p>
+      <h2 class="join__title reveal">Point your own sky at something bigger</h2>
+      <p class="join__body reveal">Get a season pass to Lumen's live data feed, monthly field notes, and early access to new mission findings.</p>
+      <form class="join__form reveal" id="joinForm">
+        <label class="visually-hidden" for="joinEmail">Email address</label>
+        <input type="email" id="joinEmail" name="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn--primary">Start Exploring</button>
+      </form>
+      <p class="join__note reveal" id="joinNote" role="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__brand"><span aria-hidden="true">✦</span> Lumen</span>
+      <span class="footer__line">Forty-one telescopes. One open sky.</span>
+      <span class="footer__year">© 2026 Lumen Observation Network</span>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
