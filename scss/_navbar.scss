@@ -1,0 +1,66 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: $z-nav;
+  padding: $space-3 0;
+  transition: padding 0.4s $ease-out, background 0.4s $ease-out, border-color 0.4s $ease-out;
+  border-bottom: 1px solid transparent;
+
+  &.is-scrolled {
+    padding: $space-1 0;
+    @include glass(rgba(5, 4, 12, 0.6));
+    border-bottom-color: rgba($color-starlight, 0.06);
+  }
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+  }
+
+  &__brand {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__mark {
+    color: var(--color-cyan);
+  }
+
+  &__links {
+    display: flex;
+    gap: $space-4;
+    font-size: 0.92rem;
+    color: var(--color-starlight-dim);
+
+    a {
+      transition: color 0.3s $ease-out;
+      @include focus-ring;
+      &:hover { color: var(--color-starlight); }
+    }
+
+    @include breakpoint(tablet) { display: none; }
+  }
+
+  &__cta {
+    padding: 0.6rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid rgba($color-starlight, 0.25);
+    font-size: 0.88rem;
+    transition: border-color 0.3s $ease-out, color 0.3s $ease-out;
+    @include focus-ring;
+
+    &:hover {
+      border-color: var(--color-cyan);
+      color: var(--color-cyan);
+    }
+  }
+}
