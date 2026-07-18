@@ -6,7 +6,6 @@
   <title>Lumen — The Universe Awaits</title>
   <meta name="description" content="Lumen is a deep-space observation network charting exoplanets, nebulae and the edges of the known universe.">
 
-  <!-- Fonts: Space Grotesk carries display type, Outfit carries body/UI, Inter carries data & counters -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,7 +14,6 @@
 </head>
 <body>
 
-  <!-- ============ LOADING SCREEN ============ -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__core">
       <span class="loader__ring"></span>
@@ -25,20 +23,17 @@
     <div class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></div>
   </div>
 
-  <!-- Ambient starfield + comet cursor render into these canvases -->
   <canvas id="particleField" class="particle-field" aria-hidden="true"></canvas>
   <div class="cursor" id="cursor" aria-hidden="true">
     <span class="cursor__core"></span>
     <span class="cursor__trail"></span>
   </div>
 
-  <!-- Scroll progress, styled as a constellation that connects as you descend the page -->
   <svg class="constellation-progress" id="constellationProgress" viewBox="0 0 40 400" preserveAspectRatio="none" aria-hidden="true">
     <line id="constellationLine" x1="20" y1="0" x2="20" y2="0" />
     <g id="constellationDots"></g>
   </svg>
 
-  <!-- ============ NAV ============ -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="#top" class="navbar__brand">
@@ -57,7 +52,6 @@
 
   <main id="top">
 
-    <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__content">
@@ -80,7 +74,6 @@
       </button>
     </section>
 
-    <!-- ============ STATS / ANIMATED COUNTERS ============ -->
     <section class="stats" id="stats">
       <div class="stats__grid">
         <div class="stat reveal">
@@ -102,7 +95,6 @@
       </div>
     </section>
 
-    <!-- ============ MISSIONS (real sequence — mission order is meaningful) ============ -->
     <section class="missions" id="missions">
       <div class="section-head reveal">
         <p class="section-head__eyebrow">Flight sequence</p>
@@ -146,7 +138,6 @@
       </ol>
     </section>
 
-    <!-- ============ REACH / PARALLAX SHOWCASE ============ -->
     <section class="reach" id="reach">
       <div class="reach__layer reach__layer--far" data-parallax="0.1" aria-hidden="true"></div>
       <div class="reach__layer reach__layer--mid" data-parallax="0.25" aria-hidden="true"></div>
@@ -170,7 +161,6 @@
       </div>
     </section>
 
-    <!-- ============ FIELD NOTES ============ -->
     <section class="field" id="field">
       <div class="section-head reveal">
         <p class="section-head__eyebrow">Field notes</p>
@@ -195,7 +185,6 @@
       </div>
     </section>
 
-    <!-- ============ JOIN / CTA ============ -->
     <section class="join" id="join">
       <div class="join__glow" aria-hidden="true"></div>
       <p class="section-head__eyebrow reveal">Join the network</p>
