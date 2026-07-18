@@ -25,16 +25,11 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // -----------------------------------------------------------------------
-  // 1. UTILITIES
-  // -----------------------------------------------------------------------
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
   const lerp = (start, end, t) => start + (end - start) * t;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
-  /** Runs `fn` on requestAnimationFrame, but only once per frame even if
-   *  called multiple times (e.g. from scroll + resize handlers). */
   function rafThrottle(fn) {
     let ticking = false;
     return (...args) => {
@@ -47,10 +42,6 @@
     };
   }
 
-
-  // -----------------------------------------------------------------------
-  // 2. LOADING SCREEN
-  // -----------------------------------------------------------------------
   function initLoader() {
     const loader = $('#loader');
     const fill = $('#loaderFill');
@@ -59,7 +50,6 @@
     return new Promise((resolve) => {
       let progress = 0;
       const tick = () => {
-        // Fake but pleasant progress curve: fast start, slow finish.
         progress += (100 - progress) * 0.12;
         fill.style.width = `${Math.min(progress, 99)}%`;
         if (progress < 99.5) {
@@ -80,9 +70,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 3. DYNAMIC NAVBAR
-  // -----------------------------------------------------------------------
   function initNavbar() {
     const navbar = $('#navbar');
     if (!navbar) return;
@@ -96,9 +83,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 4. SMOOTH SCROLL
-  // -----------------------------------------------------------------------
   function initSmoothScroll() {
     $$('[data-scroll-to]').forEach((el) => {
       el.addEventListener('click', () => {
@@ -108,7 +92,6 @@
       });
     });
 
-    // Nav anchor links (<a href="#section">) get the same treatment.
     $$('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (e) => {
         const id = link.getAttribute('href');
@@ -122,9 +105,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 5. INTERSECTION OBSERVER REVEALS
-  // -----------------------------------------------------------------------
   function initReveals() {
     const targets = $$('.reveal');
     if (!targets.length) return;
@@ -150,12 +130,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 6. ANIMATED COUNTERS
-  // -----------------------------------------------------------------------
-  // Counters only start once their stat card scrolls into view, and each
-  // runs on its own requestAnimationFrame loop with an eased curve so they
-  // don't all land at the same instant.
   function initCounters() {
     const counters = $$('[data-counter]');
     if (!counters.length) return;
@@ -202,12 +176,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 7. CUSTOM CURSOR
-  // -----------------------------------------------------------------------
-  // The core dot tracks the pointer exactly (via CSS custom properties, so
-  // it's GPU-composited); the outer ring trails behind it with a lerp for
-  // a soft, comet-like drag.
   function initCursor() {
     const cursor = $('#cursor');
     if (!cursor || prefersReducedMotion) return;
@@ -226,7 +194,6 @@
       document.documentElement.style.setProperty('--cursor-y', `${targetY}px`);
     });
 
-    // Grow the cursor slightly over interactive elements.
     $$('a, button, input').forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
@@ -242,12 +209,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 8. PARTICLE STARFIELD
-  // -----------------------------------------------------------------------
-  // A single canvas layered behind all content. Stars drift slowly and
-  // twinkle; a soft parallax offset is applied based on scroll position so
-  // the field feels like it has depth rather than being a flat overlay.
   function initParticleField() {
     const canvas = $('#particleField');
     if (!canvas) return;
@@ -257,7 +218,7 @@
     let stars = [];
     let scrollOffset = 0;
 
-    const STAR_DENSITY = 0.00012; // stars per pixel of viewport area
+    const STAR_DENSITY = 0.00012; 
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -280,7 +241,7 @@
         baseAlpha: Math.random() * 0.6 + 0.3,
         twinkleSpeed: Math.random() * 0.015 + 0.005,
         twinklePhase: Math.random() * Math.PI * 2,
-        depth: Math.random() * 0.6 + 0.2, // parallax depth: farther stars move less
+        depth: Math.random() * 0.6 + 0.2, 
         driftX: (Math.random() - 0.5) * 0.04,
       }));
     }
@@ -293,7 +254,6 @@
         const twinkle = (Math.sin(star.twinklePhase) + 1) / 2;
         const alpha = star.baseAlpha * (0.5 + twinkle * 0.5);
 
-        // Gentle horizontal drift plus vertical parallax tied to scroll.
         star.x += star.driftX;
         if (star.x < 0) star.x = width;
         if (star.x > width) star.x = 0;
@@ -321,17 +281,10 @@
 
     resize();
     requestAnimationFrame(draw);
-    if (prefersReducedMotion) draw(0); // draw a single static frame
+    if (prefersReducedMotion) draw(0); 
   }
 
 
-  // -----------------------------------------------------------------------
-  // 9. PARALLAX EFFECTS
-  // -----------------------------------------------------------------------
-  // Elements with [data-parallax="0.2"] shift vertically at that fraction
-  // of scroll distance, using translate3d for GPU compositing. All reads
-  // (scrollY) and writes (style.transform) are batched inside a single
-  // rAF tick to avoid layout thrashing.
   function initParallax() {
     if (prefersReducedMotion) return;
     const layers = $$('[data-parallax]');
@@ -351,12 +304,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 10. CONSTELLATION SCROLL PROGRESS
-  // -----------------------------------------------------------------------
-  // Builds a vertical line of star-dots once, then on scroll extends the
-  // connecting line and "lights up" each dot it passes — a scroll progress
-  // indicator that doubles as a small piece of the space motif.
   function initConstellationProgress() {
     const svg = $('#constellationProgress');
     const line = $('#constellationLine');
@@ -395,9 +342,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 11. JOIN FORM
-  // -----------------------------------------------------------------------
   function initJoinForm() {
     const form = $('#joinForm');
     const note = $('#joinNote');
@@ -413,9 +357,6 @@
   }
 
 
-  // -----------------------------------------------------------------------
-  // 12. BOOTSTRAPPING
-  // -----------------------------------------------------------------------
   function main() {
     document.body.style.overflow = 'hidden'; // hold scroll behind the loader
 
