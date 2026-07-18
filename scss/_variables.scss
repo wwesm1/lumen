@@ -1,18 +1,12 @@
-// Palette is deliberately not "void-black + one neon accent": it pairs a
-// deep indigo base with a nebula violet / stellar cyan pair so gradients
-// read as gas-cloud color, plus a warm star-gold for human, lived-in accents.
+$color-void:        #05040c;  
+$color-void-soft:    #0b0918; 
+$color-plum:         #1a1330; 
+$color-nebula:       #6b4eff;  
+$color-cyan:         #3ee6e0;
+$color-gold:         #ffb86b;  
+$color-starlight:    #f5f3ff; 
+$color-starlight-dim: #a8a3c4;
 
-$color-void:        #05040c;   // page background, deepest space
-$color-void-soft:    #0b0918;  // card / panel surface
-$color-plum:         #1a1330;  // raised surface
-$color-nebula:       #6b4eff;  // primary accent — violet nebula
-$color-cyan:         #3ee6e0;  // secondary accent — stellar cyan
-$color-gold:         #ffb86b;  // warm accent — starlight / active states
-$color-starlight:    #f5f3ff;  // primary text on dark
-$color-starlight-dim: #a8a3c4; // secondary text on dark
-
-// CSS custom properties mirror the palette so JS and future theming can
-// read/write them at runtime without touching SCSS.
 :root {
   --color-void: #{$color-void};
   --color-void-soft: #{$color-void-soft};
@@ -26,10 +20,9 @@ $color-starlight-dim: #a8a3c4; // secondary text on dark
   --cursor-y: 50vh;
 }
 
-// Type scale — three families, three jobs.
-$font-display: 'Space Grotesk', sans-serif; // headings
-$font-body:    'Outfit', sans-serif;        // body copy & UI
-$font-data:    'Inter', sans-serif;         // counters, labels, captions
+$font-display: 'Space Grotesk', sans-serif; 
+$font-body:    'Outfit', sans-serif;        
+$font-data:    'Inter', sans-serif;      
 
 $fs-hero:   clamp(3rem, 9vw, 8rem);
 $fs-h2:     clamp(2rem, 4.5vw, 3.25rem);
