@@ -15,7 +15,7 @@ body {
   font-size: $fs-body;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none; // replaced by the custom cursor
+  cursor: none; 
 }
 
 @media (hover: none), (pointer: coarse) {
