@@ -45,27 +45,46 @@
   function initLoader() {
     const loader = $('#loader');
     const fill = $('#loaderFill');
-    if (!loader) return Promise.resolve();
+
+    if (!loader || !fill) return Promise.resolve();
 
     return new Promise((resolve) => {
       let progress = 0;
-      const tick = () => {
-        progress += (100 - progress) * 0.12;
-        fill.style.width = `${Math.min(progress, 99)}%`;
-        if (progress < 99.5) {
-          requestAnimationFrame(tick);
-        }
-      };
-      requestAnimationFrame(tick);
+      let finished = false;
 
-      window.addEventListener('load', () => {
+      const complete = () => {
+        if (finished) return;
+        finished = true;
+
         fill.style.width = '100%';
+
         setTimeout(() => {
           loader.classList.add('is-hidden');
           document.body.style.overflow = '';
           resolve();
         }, 400);
-      }, { once: true });
+      };
+
+      function tick() {
+        if (finished) return;
+
+        progress += (100 - progress) * 0.12;
+        fill.style.width = `${Math.min(progress, 99)}%`;
+
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+
+      // If everything has already loaded, finish immediately.
+      if (document.readyState === 'complete') {
+        complete();
+      } else {
+        window.addEventListener('load', complete, { once: true });
+
+        // Failsafe: never leave the loader on screen forever.
+        setTimeout(complete, 5000);
+      }
     });
   }
 
@@ -218,7 +237,7 @@
     let stars = [];
     let scrollOffset = 0;
 
-    const STAR_DENSITY = 0.00012; 
+    const STAR_DENSITY = 0.00012;
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -241,7 +260,7 @@
         baseAlpha: Math.random() * 0.6 + 0.3,
         twinkleSpeed: Math.random() * 0.015 + 0.005,
         twinklePhase: Math.random() * Math.PI * 2,
-        depth: Math.random() * 0.6 + 0.2, 
+        depth: Math.random() * 0.6 + 0.2,
         driftX: (Math.random() - 0.5) * 0.04,
       }));
     }
@@ -281,7 +300,7 @@
 
     resize();
     requestAnimationFrame(draw);
-    if (prefersReducedMotion) draw(0); 
+    if (prefersReducedMotion) draw(0);
   }
 
 
@@ -357,8 +376,8 @@
   }
 
 
-  function main() {
-    document.body.style.overflow = 'hidden'; // hold scroll behind the loader
+  async function main() {
+    document.body.style.overflow = 'hidden';
 
     initNavbar();
     initSmoothScroll();
@@ -369,9 +388,9 @@
     initParallax();
     initConstellationProgress();
     initJoinForm();
-    initLoader();
-  }
 
+    await initLoader();
+  }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', main);
   } else {
