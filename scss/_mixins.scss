@@ -8,8 +8,6 @@
   }
 }
 
-// GPU-accelerated transform base — promotes to its own layer so animated
-// elements don't trigger layout/paint on neighboring content.
 @mixin gpu-layer {
   will-change: transform, opacity;
   transform: translateZ(0);
