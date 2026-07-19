@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lumen — The Universe Awaits</title>
-  <meta name="description" content="Lumen is a deep-space observation network charting exoplanets, nebulae and the edges of the known universe.">
+  <link rel="icon" type="image/svg+xml"
+    href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" stop-color="%233b82f6"/><stop offset="100%25" stop-color="%238b5cf6"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="%230f172a"/><circle cx="32" cy="32" r="17" fill="none" stroke="url(%23g)" stroke-width="7"/><circle cx="32" cy="32" r="7" fill="%23ffffff"/></svg>' />
+  <meta name="description"
+    content="Lumen is a deep-space observation network charting exoplanets, nebulae and the edges of the known universe.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
   <div class="loader" id="loader" aria-hidden="true">
@@ -29,7 +36,8 @@
     <span class="cursor__trail"></span>
   </div>
 
-  <svg class="constellation-progress" id="constellationProgress" viewBox="0 0 40 400" preserveAspectRatio="none" aria-hidden="true">
+  <svg class="constellation-progress" id="constellationProgress" viewBox="0 0 40 400" preserveAspectRatio="none"
+    aria-hidden="true">
     <line id="constellationLine" x1="20" y1="0" x2="20" y2="0" />
     <g id="constellationDots"></g>
   </svg>
@@ -99,7 +107,8 @@
       <div class="section-head reveal">
         <p class="section-head__eyebrow">Flight sequence</p>
         <h2 class="section-head__title">Four missions, one line of sight</h2>
-        <p class="section-head__body">Every mission builds on the last array's findings — each one narrows the search for the next.</p>
+        <p class="section-head__body">Every mission builds on the last array's findings — each one narrows the search
+          for the next.</p>
       </div>
 
       <ol class="mission-list">
@@ -107,7 +116,8 @@
           <span class="mission__index">01</span>
           <div class="mission__body">
             <h3 class="mission__title">Wide Field Survey</h3>
-            <p class="mission__desc">A first pass across the visible sky, flagging candidate systems for closer study.</p>
+            <p class="mission__desc">A first pass across the visible sky, flagging candidate systems for closer study.
+            </p>
           </div>
           <span class="mission__status mission__status--done">Complete</span>
         </li>
@@ -170,17 +180,20 @@
         <article class="note reveal">
           <span class="note__tag">Nebula</span>
           <h3>A nursery of new stars in Cygnus</h3>
-          <p>Infrared imaging revealed over 200 protostars forming inside a dust cloud we'd mapped as empty a decade ago.</p>
+          <p>Infrared imaging revealed over 200 protostars forming inside a dust cloud we'd mapped as empty a decade
+            ago.</p>
         </article>
         <article class="note reveal">
           <span class="note__tag">Exoplanet</span>
           <h3>A tidally locked world with weather</h3>
-          <p>Wind patterns on the terminator line of a nearby exoplanet suggest an atmosphere thick enough to circulate heat.</p>
+          <p>Wind patterns on the terminator line of a nearby exoplanet suggest an atmosphere thick enough to circulate
+            heat.</p>
         </article>
         <article class="note reveal">
           <span class="note__tag">Deep Field</span>
           <h3>Light from before the Milky Way formed</h3>
-          <p>A faint galaxy cluster, redshifted almost past detection, gives us a glimpse of the universe in its infancy.</p>
+          <p>A faint galaxy cluster, redshifted almost past detection, gives us a glimpse of the universe in its
+            infancy.</p>
         </article>
       </div>
     </section>
@@ -189,7 +202,8 @@
       <div class="join__glow" aria-hidden="true"></div>
       <p class="section-head__eyebrow reveal">Join the network</p>
       <h2 class="join__title reveal">Point your own sky at something bigger</h2>
-      <p class="join__body reveal">Get a season pass to Lumen's live data feed, monthly field notes, and early access to new mission findings.</p>
+      <p class="join__body reveal">Get a season pass to Lumen's live data feed, monthly field notes, and early access to
+        new mission findings.</p>
       <form class="join__form reveal" id="joinForm">
         <label class="visually-hidden" for="joinEmail">Email address</label>
         <input type="email" id="joinEmail" name="email" placeholder="you@example.com" required>
@@ -210,4 +224,5 @@
 
   <script src="js/app.js"></script>
 </body>
+
 </html>
